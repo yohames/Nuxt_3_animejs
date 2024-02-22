@@ -1,5 +1,6 @@
 <script setup>
 const { $anime } = useNuxtApp();
+import { useWindowScroll } from '@vueuse/core'
 
 function handleScroll(event) {
   console.log("fire scroll trigger", event);
