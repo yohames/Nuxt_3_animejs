@@ -1,12 +1,13 @@
 <script setup>
-const { $anime } = useNuxtApp();
-import { useWindowScroll } from '@vueuse/core'
+import { useWindowScroll } from "@vueuse/core";
 
-function handleScroll(event) {
-  console.log("fire scroll trigger", event);
-}
+const { $anime } = useNuxtApp();
+const { x, y } = useWindowScroll();
+function handleScroll(event) {}
 
 onMounted(() => {
+  console.log("fire scroll trigger");
+
   const cards = document.querySelector("#cards");
   const card = document.querySelector("#card");
   // function fireScroll(event) {
@@ -39,25 +40,37 @@ onMounted(() => {
   //   opacity: 0.7,
   // });
 });
+
+const dynamicClass = computed(() => {
+  return `scale-[${y.value}]}`;
+});
 </script>
 <template>
-  <div class="m-20">
+  <div class="flex flex-col m-20">
     <NuxtLink
       to="/"
       class="bg-gray-100 shadow-lg flex justify-center ring-1 ring-gray-300 hover:bg-gray-200 duration-300 items-center self-start w-40 px-5 rounded-lg py-2"
       >Back</NuxtLink
     >
-    <ul
-      class="flex flex-col gap-y-5 my-10 items-center py-10 bg-red-400 max-h-[85vh] overflow-y-auto"
-      @scroll="handleScroll"
-      id="cards"
-    >
+    <div class="sticky top-10 -ml-10">hello</div>
+
+    <div class="flex flex-col gap-y-10">
       <div
         id="card"
         v-for="i in 5"
-        class="bg-green-100 min-w-[70%] min-h-[70vh] rounded-lg skew-y-3 text-red-600 text-6xl"
-      ></div>
-    </ul>
+        class="sticky top-40 min-w-[70%] rounded-lg text-6xl"
+      >
+        <div class="min-h-screen">
+          <div
+            class="bg-red-100 h-[50vh] flex items-center justify-center rounded-2xl"
+            :class="dynamicClass"
+          >
+            {{ `scale-[${y / 100}] bg-red-${i * 100}` }}
+            Test
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
