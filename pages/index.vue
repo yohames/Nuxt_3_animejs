@@ -52,14 +52,19 @@ onMounted(() => {
   <div>
     <div class="flex gap-x-5 m-20">
       <NuxtLink
+        to="/simple_animations"
+        class="bg-gray-100 shadow-lg flex justify-center ring-1 ring-gray-300 hover:bg-gray-200 duration-300 items-center self-start w-auto px-5 rounded-lg py-2"
+        >Simple Animations Page</NuxtLink
+      >
+      <NuxtLink
         to="/svg"
-        class="bg-gray-100 shadow-lg flex justify-center ring-1 ring-gray-300 hover:bg-gray-200 duration-300 items-center self-start w-40 px-5 rounded-lg py-2"
+        class="bg-gray-100 shadow-lg flex justify-center ring-1 ring-gray-300 hover:bg-gray-200 duration-300 items-center self-start min-w-40 px-5 rounded-lg py-2"
       >
         Svg page
       </NuxtLink>
       <NuxtLink
         to="/scroll"
-        class="bg-gray-100 shadow-lg flex justify-center ring-1 ring-gray-300 hover:bg-gray-200 duration-300 items-center self-start w-40 px-5 rounded-lg py-2"
+        class="bg-gray-100 shadow-lg flex justify-center ring-1 ring-gray-300 hover:bg-gray-200 duration-300 items-center self-start min-w-40 px-5 rounded-lg py-2"
         >Scroll Page</NuxtLink
       >
     </div>
