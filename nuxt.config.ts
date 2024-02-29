@@ -2,7 +2,12 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
-  modules: ["@nuxtjs/tailwindcss", "@hypernym/nuxt-anime", "@vueuse/nuxt"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@hypernym/nuxt-anime",
+    "@vueuse/nuxt",
+    "nuxt-svgo",
+  ],
   anime: {
     provide: true,
   },

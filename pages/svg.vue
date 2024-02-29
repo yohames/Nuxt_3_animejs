@@ -1,22 +1,10 @@
 <script setup>
+import IconHome from "@/assets/svg/HelloSVG.svg";
+import IconBackground from "@/assets/svg/svg_background.svg";
+
 const { $anime } = useNuxtApp();
 
 onMounted(() => {
-  let data = document.querySelectorAll(".parallax");
-  let scrollX = 0;
-  let scrollY = 0;
-  window.addEventListener("mousemove", (e) => {
-    scrollX = e.clientX - window.innerWidth / 2;
-    scrollY = e.clientY - window.innerHeight / 2;
-    data.forEach((e) => {
-      let speedx = e.dataset.speedx;
-      let speedy = e.dataset.speedy;
-      e.style.transform = `translate(${-scrollX * speedx}px, ${
-        scrollY * speedy
-      }px)`;
-    });
-  });
-
   $anime({
     targets: ".path",
     strokeDashoffset: function (el) {
@@ -47,6 +35,30 @@ onMounted(() => {
     loop: true,
     direction: "alternate",
   });
+
+  $anime({
+    targets: "#hellosvg path",
+    strokeDashoffset: [$anime.setDashoffset, 0],
+    easing: "easeOutExpo",
+    duration: 5000,
+    delay: function (el, i) {
+      return i * 500;
+    },
+    direction: "alternate",
+    loop: false,
+  });
+
+  $anime({
+    targets: "#arrow path",
+    strokeDashoffset: [$anime.setDashoffset, 0],
+    easing: "easeOutExpo",
+    duration: 5000,
+    delay: function (el, i) {
+      return i * 500;
+    },
+    direction: "alternate",
+    loop: false,
+  });
 });
 </script>
 <template>
@@ -56,6 +68,15 @@ onMounted(() => {
       class="bg-gray-100 shadow-lg flex justify-center ring-1 ring-gray-300 hover:bg-gray-200 duration-300 items-center self-start w-40 px-5 rounded-lg py-2"
       >Back</NuxtLink
     >
+
+    <IconHome
+      id="hellosvg"
+      class="w-[20vw] h-[20vh]"
+      filled
+      :fontControlled="false"
+    />
+    <IconBackground class="w-[80vw] h-[80vh]" :fontControlled="false" filled />
+
     <h3>
       <svg
         version="1.1"
@@ -229,7 +250,7 @@ svg {
   margin: auto;
 }
 
-#chart {
+#arrow {
   font-size: 64px;
   position: relative;
   font-family: Arial Black;
@@ -237,13 +258,13 @@ svg {
   text-anchor: middle;
   width: 30vw;
   height: 30vh;
-  stroke-dasharray: 703.7171020507812;
+  stroke-dasharray: 2321.466064453125;
   animation: 5s fillSvg cubic-bezier(0.445, 0, 0.25, 0.99);
 }
 
 @keyframes fillSvg {
   0% {
-    stroke-dashoffset: 703.7171020507812;
+    stroke-dashoffset: 2321.466064453125;
   }
   100% {
     stroke-dashoffset: 0;
