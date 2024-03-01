@@ -1,6 +1,7 @@
 <script setup>
 import IconHome from "@/assets/svg/HelloSVG.svg";
 import IconBackground from "@/assets/svg/svg_background.svg";
+import IconLines from "@/assets/svg/svg_lines.svg";
 
 const { $anime } = useNuxtApp();
 
@@ -49,20 +50,32 @@ onMounted(() => {
   });
 
   $anime({
+    targets: "#svgline path",
+    strokeDashoffset: [$anime.setDashoffset, 0],
+    easing: "easeOutExpo",
+    duration: 500,
+    delay: function (el, i) {
+      return i * 100;
+    },
+    direction: "alternate",
+    loop: true,
+  });
+
+  $anime({
     targets: "#arrow path",
     strokeDashoffset: [$anime.setDashoffset, 0],
     easing: "easeOutExpo",
     duration: 5000,
     delay: function (el, i) {
-      return i * 500;
+      return i * 5000;
     },
-    direction: "alternate",
+    direction: "animation",
     loop: false,
   });
 });
 </script>
 <template>
-  <div class="m-20">
+  <div class="relative">
     <NuxtLink
       to="/"
       class="bg-gray-100 shadow-lg flex justify-center ring-1 ring-gray-300 hover:bg-gray-200 duration-300 items-center self-start w-40 px-5 rounded-lg py-2"
@@ -75,7 +88,11 @@ onMounted(() => {
       filled
       :fontControlled="false"
     />
-    <IconBackground class="w-[80vw] h-[80vh]" :fontControlled="false" filled />
+    <IconBackground
+      class="w-[100vw] h-full opacity-40 absolute"
+      :fontControlled="false"
+      filled
+    />
 
     <h3>
       <svg
@@ -226,6 +243,13 @@ onMounted(() => {
         stroke-width="2"
       />
     </svg>
+
+    <IconLines
+      id="svgline"
+      class="absolute max-w-[40rem] top-0 right-0"
+      filled
+      :fontControlled="false"
+    />
   </div>
 </template>
 
