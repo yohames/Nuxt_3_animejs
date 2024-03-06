@@ -2,6 +2,7 @@
 import IconHome from "@/assets/svg/HelloSVG.svg";
 import IconBackground from "@/assets/svg/svg_background.svg";
 import IconLines from "@/assets/svg/svg_lines.svg";
+import IconHyperDrive from "@/assets/svg/hyperdrive.svg";
 
 const { $anime } = useNuxtApp();
 
@@ -48,6 +49,31 @@ onMounted(() => {
     direction: "alternate",
     loop: false,
   });
+  
+  $anime({
+    targets: "#shadow path",
+    strokeDashoffset: [$anime.setDashoffset, 0],
+    easing: "easeOutExpo",
+    duration: 4000,
+    delay: function (el, i) {
+      return i * 1000;
+    },
+    direction: "alternate",
+    loop: true,
+  });
+
+
+  $anime({
+    targets: "#hyperdrive path",
+    strokeDashoffset: [$anime.setDashoffset, 0],
+    easing: "easeOutExpo",
+    duration: 1000,
+    delay: function (el, i) {
+      return i * 10;
+    },
+    direction: "alternate",
+    loop: true,
+  });
 
   $anime({
     targets: "#svgline path",
@@ -89,10 +115,12 @@ onMounted(() => {
       :fontControlled="false"
     />
     <IconBackground
+    id="shadow"
       class="w-[100vw] h-full opacity-40 absolute"
       :fontControlled="false"
       filled
     />
+    <IconHyperDrive id="hyperdrive" class="" :fontControlled="false" />
 
     <h3>
       <svg
