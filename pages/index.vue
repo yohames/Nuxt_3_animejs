@@ -63,6 +63,12 @@ onMounted(() => {
         Svg page
       </NuxtLink>
       <NuxtLink
+        to="/text"
+        class="bg-gray-100 shadow-lg flex justify-center ring-1 ring-gray-300 hover:bg-gray-200 duration-300 items-center self-start min-w-40 px-5 rounded-lg py-2"
+      >
+        Text
+      </NuxtLink>
+      <NuxtLink
         to="/scroll"
         class="bg-gray-100 shadow-lg flex justify-center ring-1 ring-gray-300 hover:bg-gray-200 duration-300 items-center self-start min-w-40 px-5 rounded-lg py-2"
         >Scroll Page</NuxtLink
